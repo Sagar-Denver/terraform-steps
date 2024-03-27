@@ -1,0 +1,39 @@
+1. Prepare Your Environment:
+Make sure you have Terraform installed on your local machine.
+Configure AWS credentials with appropriate permissions for Terraform to interact with AWS services.
+
+2. Create Terraform Configuration Files:
+Create a directory for your Terraform configuration files (e.g., terraform/).
+Inside the directory, create the following files:
+main.tf: Main Terraform configuration file for defining AWS resources.
+variables.tf: File for declaring variables used in the Terraform configuration.
+outputs.tf: File for defining outputs to display after Terraform applies the configuration.
+
+3. Define AWS ECS Resources:
+In main.tf, define the AWS ECS resources required to deploy the Medusa application. This includes:
+ECS Cluster: Define an ECS cluster where the containers will be deployed.
+ECS Task Definition: Define a task definition for the Medusa application, specifying the Docker image, CPU/memory limits, container port, and any environment variables.
+ECS Service: Define an ECS service to manage the deployment and scaling of the task(s) in the ECS cluster.
+
+4. Set Up Networking and Load Balancing (Optional):
+If needed, define networking resources such as VPC, subnets, security groups, and an Application Load Balancer (ALB) to expose the Medusa application to the internet.
+Configure the ALB to route traffic to the ECS service using target groups.
+
+5. Configure Docker Image and Registry:
+Ensure that the Docker image for the Medusa Node.js application is available in a Docker registry (e.g., Amazon ECR, Docker Hub).
+Provide the Docker image URI in the ECS task definition within the Terraform configuration.
+
+6. Define Terraform Variables:
+In variables.tf, define variables such as AWS region, ECS cluster name, Docker image URI, container port, CPU/memory limits, and any other configuration parameters.
+
+7. Apply Terraform Configuration:
+Run terraform init in the terminal to initialize the Terraform project.
+Run terraform plan to preview the changes that Terraform will apply.
+Run terraform apply to apply the Terraform configuration and deploy the Medusa application in AWS ECS.
+
+8. Verify Deployment:
+After Terraform successfully deploys the resources, verify that the Medusa application is running in AWS ECS.
+Access the application using the ALB URL or ECS service endpoint to ensure it is functioning as expected.
+
+9.Clean Up (Optional):
+To clean up resources created by Terraform, run terraform destroy after verifying the deployment. This will remove the ECS cluster, services, tasks, networking resources, and any other provisioned resources.
